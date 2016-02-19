@@ -17,12 +17,6 @@ class ZlibNgConan(ConanFile):
     url="http://github.com/lasote/conan-zlib-ng"
     license="https://github.com/Dead2/zlib-ng/blob/ba7f0eb6e294306ac6d771216ea4442f2ea2d830/LICENSE.md"
 
-    def conan_info(self):
-        # We don't want to change the package for each compiler version but
-        # we need the setting to compile with cmake
-        if self.settings.os == "Macos":
-            self.info.settings.compiler.version = "any"
-
     def source(self):
         zip_name = "%s.zip" % self.github_sha
         download("https://github.com/Dead2/zlib-ng/archive/%s" % zip_name, zip_name)
