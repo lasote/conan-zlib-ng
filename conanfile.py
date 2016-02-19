@@ -46,6 +46,8 @@ class ZlibNgConan(ConanFile):
                 replace_in_file("./%s/Makefile" % self.ZIP_FOLDER_NAME, old_str, new_str)
             self.run("cd %s && make" % self.ZIP_FOLDER_NAME)
         else:
+            # Disable testing
+            replace_in_file(os.path.join(self.ZIP_FOLDER_NAME, "CMakeLists.txt"), "enable_testing()", "")
             cmake = CMake(self.settings)
             if self.settings.os == "Windows":
                 self.run("IF not exist _build mkdir _build")
