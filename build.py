@@ -27,7 +27,7 @@ if __name__ == "__main__":
 
     args = " ".join(sys.argv[1:])
     builder = ConanMultiPackager(args, username, channel)
-    builder.add_common_builds(shared_option_name="zlib:shared", visual_versions=[10, 12, 14])
+    builder.add_common_builds(shared_option_name="zlib-ng:shared", visual_versions=[10, 12, 14])
     print(builder.builds)
 
     if use_docker:  
