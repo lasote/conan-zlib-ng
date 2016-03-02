@@ -17,6 +17,12 @@ class ZlibNgConan(ConanFile):
     url="http://github.com/lasote/conan-zlib-ng"
     license="https://github.com/Dead2/zlib-ng/blob/ba7f0eb6e294306ac6d771216ea4442f2ea2d830/LICENSE.md"
 
+    def config(self):
+        try: # Try catch can be removed when conan 0.8 is released
+            del self.settings.compiler.libcxx 
+        except: 
+            pass
+
     def source(self):
         zip_name = "%s.zip" % self.github_sha
         download("https://github.com/Dead2/zlib-ng/archive/%s" % zip_name, zip_name)
